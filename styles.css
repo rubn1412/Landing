@@ -1,0 +1,189 @@
+/* Estilos Generales y Negritas */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+strong, b, h1, h2, h3 {
+    font-weight: 700;
+}
+
+header {
+    background-color: #0077b6;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* LAYOUT DE DOS COLUMNAS (Carrusel Fijo + Descripción Fija con Scroll) */
+.landing-content {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    align-items: flex-start;
+}
+
+.left-column {
+    flex: 0 0 40%;
+    padding-right: 20px;
+}
+
+.right-column {
+    flex: 1;
+    padding-left: 20px;
+}
+
+/* 1. Y 3. CARRUSEL GRANDE Y COLUMNA IZQUIERDA FIJA */
+.sticky-carousel {
+    position: sticky;
+    top: 20px;
+    width: 100%;
+    /* Altura ajustada para el carrusel + dots */
+    height: 60vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-section {
+    max-width: none;
+    margin-bottom: 0;
+    box-shadow: none;
+    border-radius: 0;
+    flex-grow: 1;
+    overflow: hidden; /* Importante para que la imagen no se salga */
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    height: 90%; /* Ocupa la mayor parte de la altura de la sección */
+}
+
+.carousel-image {
+    width: 100%;
+    /* ¡Ajuste para que la imagen se vea más grande! */
+    height: 100%; 
+    display: block;
+    object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+}
+
+
+/* 2. COLUMNA DERECHA FIJA CON SCROLL */
+.fixed-scroll-content {
+    position: sticky; /* Fija la columna derecha */
+    top: 20px; /* Distancia desde la parte superior */
+    height: calc(100vh - 40px); /* Altura igual a la ventana - margen */
+    overflow-y: scroll; /* ¡Habilita el scroll vertical! */
+    padding-bottom: 20px; /* Espacio extra al final */
+}
+/* Opcional: Estilo de la barra de desplazamiento */
+.fixed-scroll-content::-webkit-scrollbar {
+    width: 8px;
+}
+.fixed-scroll-content::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+/* Resto de Estilos */
+h2 {
+    color: #005f73;
+    border-bottom: 2px solid #005f73;
+    padding-bottom: 5px;
+}
+
+.carousel-slide {
+    display: none;
+    width: 100%;
+}
+
+.carousel-slide.active {
+    display: block;
+}
+
+/* Botones de navegación */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    /* ... (otros estilos) */
+}
+/* ... (el resto de estilos de botones, dots, y bloques AIDA no cambiaron) ... */
+
+.impact-text {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #e63946;
+}
+
+.media-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* SECCIÓN ESPECIFICACIONES - Ajustada a la columna izquierda */
+.features-specs {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Media Queries (Mantenidos) */
+@media (max-width: 900px) {
+    .landing-content {
+        flex-direction: column;
+    }
+
+    .left-column {
+        flex: auto;
+        width: 100%;
+        padding-right: 0;
+        order: -1;
+        margin-bottom: 20px;
+    }
+
+    .right-column {
+        flex: auto;
+        width: 100%;
+        padding-left: 0;
+        /* Desactivar 'sticky' y scroll en móvil */
+        position: static;
+        height: auto;
+        overflow-y: visible;
+    }
+
+    .sticky-carousel {
+        position: static;
+        min-height: auto;
+        height: auto; /* Se ajusta al contenido en móvil */
+    }
+
+    .carousel-container {
+        max-height: none;
+        height: auto;
+    }
+
+    .cta-button {
+        font-size: 1.2em;
+        padding: 12px 25px;
+    }
+}
